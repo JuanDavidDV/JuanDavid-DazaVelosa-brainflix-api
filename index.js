@@ -13,7 +13,7 @@ const readAllVideosData = () => {
 }
 
 
-app.get("/", (req, res) => {
+app.get("/videos/:videoId", (req, res) => {
     const allVideosData = readAllVideosData();
     res.json(allVideosData);
 })
