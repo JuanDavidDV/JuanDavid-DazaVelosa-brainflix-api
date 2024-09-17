@@ -3,15 +3,19 @@ import fs from "fs";
 
 const router = express.Router(); //Enables Router use
 
-const readAllVideosData = () => {
+const readAllVideosData = (videoId) => {
     const videosData = fs.readFileSync("./data/videos.json");
     const videosDataParse = JSON.parse(videosData);
-    return videosDataParse;
+    const selectVideo = videosDataParse.find((video) => video.id === videoId);
+    console.log(selectVideo);
+    return selectVideo;
 }
 
 router.get("/:videoId", (req, res) => {
-    const allVideosData = readAllVideosData();
-    console.log(allVideosData);
+    const videoId = req.params.videoId;
+    console.log(videoId);
+    const allVideosData = readAllVideosData(videoId);
+    //console.log(allVideosData);
     return res.json(allVideosData);
 });
 
