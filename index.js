@@ -5,6 +5,7 @@ import cors from "cors";
 const app = express();
 
 app.use(cors());
+app.use("/videos", videosRoutes);
 
 
 app.listen(8080, () => {
