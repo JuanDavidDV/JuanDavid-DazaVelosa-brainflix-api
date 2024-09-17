@@ -14,10 +14,12 @@ const readAllVideosData = () => {
 
 
 app.get("/videos/:videoId", (req, res) => {
+    
     const allVideosData = readAllVideosData();
+    console.log(allVideosData);
     res.json(allVideosData);
 })
 
 app.listen(8080, () => {
-    console.log("Server is running on http://localhost:8080 ");
+    console.log("Server is running on http://localhost:8080");
 })
