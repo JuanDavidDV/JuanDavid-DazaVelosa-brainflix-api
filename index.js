@@ -7,10 +7,6 @@ const app = express();
 const { BACKEND_URL, CORS_ORIGIN } = process.env;
 const PORT = process.env.PORT || 5051;
 
-console.log(PORT);
-console.log(BACKEND_URL);
-console.log(CORS_ORIGIN)
-
 app.use(cors({ CORS_ORIGIN })); 
 app.use("/videos", videosRoutes);
 
