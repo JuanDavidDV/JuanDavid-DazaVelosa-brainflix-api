@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs";
 
 const router = express.Router(); //Enables Router use
+router.use(express.json());
 
 const videosData = fs.readFileSync("./data/videos.json");   //Retrieves data from videos.json file
 const videosDataParse = JSON.parse(videosData);     //Parsed video data
@@ -18,12 +19,8 @@ router.get("/:videoId", (req, res) => {
     res.status(200).json(allVideosData);
 });
 
-const nextVideoList = () => {
-    const nextVideos = videosDataParse.filter(())
-}
-
 router.get("/", (req, res) => {
-
+    res.status(200).json(videosDataParse);
 })
 
 export default router;
