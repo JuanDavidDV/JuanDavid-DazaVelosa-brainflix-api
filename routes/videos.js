@@ -10,7 +10,6 @@ const videosDataParse = JSON.parse(videosData);     //Parsed video data
 
 const readAllVideosData = (videoId) => {
     const selectVideo = videosDataParse.find((video) => video.id === videoId);  //DO I NEED TO USE THE FIND FUNCTION IN MY BACK END OR FRONT END?
-    console.log(selectVideo);
     return selectVideo;
 }
 
@@ -22,6 +21,7 @@ router.get("/:videoId", (req, res) => {
 
 router.get("/", (req, res) => {
     res.status(200).json(videosDataParse);
+    console.log(videosDataParse)
 })
 
 export default router;
