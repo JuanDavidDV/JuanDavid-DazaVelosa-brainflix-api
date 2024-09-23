@@ -8,19 +8,19 @@ router.use(express.json());
 const videosData = fs.readFileSync("./data/videos.json");   //Retrieves data from videos.json file
 const videosDataParse = JSON.parse(videosData);     //Parsed video data
 
-const readAllVideosData = (videoId) => {
-    const selectVideo = videosDataParse.find((video) => video.id === videoId);  //DO I NEED TO USE THE FIND FUNCTION IN MY BACK END OR FRONT END?
-    return selectVideo;
-}
-
 router.get("/:videoId", (req, res) => {
     const videoId = req.params.videoId;
-    const allVideosData = readAllVideosData(videoId);
-    res.status(200).json(allVideosData);
+    const selectVideo = videosDataParse.find((video) => video.id === videoId);
+    res.status(200).json(selectVideo);
 });
 
 router.get("/", (req, res) => {
-    res.status(200).json(videosDataParse);
+    res.status(200).json(videosDataParse.map((video) => ({
+        id: video.id,
+        title: video.title,
+        channel: video.channel,
+        image: video.image
+    })));
     console.log(videosDataParse)
 })
 
