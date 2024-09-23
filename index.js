@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 5051;
 
 app.use(cors({ CORS_ORIGIN })); 
 app.use(express.json());
+app.use(express.static("./public"));
 app.use("/videos", videosRoutes);
 
 
