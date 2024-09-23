@@ -8,8 +8,8 @@ router.use(express.json());
 const videosData = fs.readFileSync("./data/videos.json");   //Retrieves data from videos.json file
 const videosDataParse = JSON.parse(videosData);     //Parsed video data
 
-router.get("/:videoId", (req, res) => {
-    const videoId = req.params.videoId;
+router.get("/:id", (req, res) => {
+    const videoId = req.params.id;
     const selectVideo = videosDataParse.find((video) => video.id === videoId);
     res.status(200).json(selectVideo);
 });
@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
         channel: video.channel,
         image: video.image
     })));
-    console.log(videosDataParse)
-})
+});
 
 export default router;
