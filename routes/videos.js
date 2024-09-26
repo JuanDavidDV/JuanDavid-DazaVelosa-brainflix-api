@@ -8,6 +8,10 @@ router.use(express.json());
 const videosData = fs.readFileSync("./data/videos.json");   //Retrieves data from videos.json file
 const videosDataParse = JSON.parse(videosData);     //Parsed video data
 
+const syncVideosData = (data) => {
+    fs.writeFileSync("./data/videos.json", JSON.stringify(data));
+}
+
 router.get("/:id", (req, res) => {
     const videoId = req.params.id;
     const selectVideo = videosDataParse.find((video) => video.id === videoId);
@@ -38,7 +42,9 @@ router.route("/")
             timestamp: Date.now(),
             comments: []
         }
+        console.log(newVideo);
         videosDataParse.push(newVideo);
+        syncVideosData(videosDataParse);
         res.json(newVideo);
     });
 
