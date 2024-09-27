@@ -3,7 +3,6 @@ import fs from "fs";
 import { v4 as uuidv4} from "uuid";
 
 const router = express.Router(); //Enables Router use
-router.use(express.json());
 
 const videosData = fs.readFileSync("./data/videos.json");   //Retrieves data from videos.json file
 const videosDataParse = JSON.parse(videosData);     //Parsed video data
@@ -42,10 +41,9 @@ router.route("/")
             timestamp: Date.now(),
             comments: []
         }
-        console.log(newVideo);
         videosDataParse.push(newVideo);
         syncVideosData(videosDataParse);
-        res.json(newVideo);
+        res.status(200).json(newVideo);
     });
 
 export default router;
