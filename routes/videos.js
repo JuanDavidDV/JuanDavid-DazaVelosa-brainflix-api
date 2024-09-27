@@ -46,5 +46,21 @@ router.route("/")
         res.status(200).json(newVideo);
     });
 
+router.post("/:id/comments", (req, res) => {
+    const videoId = req.params.id;
+    const { comment } = req.body;
+    const currentVideo = videosDataParse.find((video) => video.id === videoId);
+    const newComment = {
+        name: "Mohan Muruge",
+        comment: comment,
+        id: uuidv4(),
+        timestamp: Date.now()
+    };
+
+    currentVideo.comments.push(newComment);
+    syncVideosData(currentVideo);
+    res.status(200).json(newComment);
+});
+
 export default router;
 
