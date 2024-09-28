@@ -48,10 +48,10 @@ router.route("/")
 
 router.post("/:id/comments", (req, res) => {
     const videoId = req.params.id;
-    const { comment } = req.body;
+    const { name, comment } = req.body;
     const currentVideo = videosDataParse.find((video) => video.id === videoId);
     const newComment = {
-        name: "Mohan Muruge",
+        name: name,
         comment: comment,
         id: uuidv4(),
         timestamp: Date.now()
