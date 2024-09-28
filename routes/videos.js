@@ -51,9 +51,10 @@ router.post("/:id/comments", (req, res) => {
     const { name, comment } = req.body;
     const currentVideo = videosDataParse.find((video) => video.id === videoId);
     const newComment = {
+        id: uuidv4(),
         name: name,
         comment: comment,
-        id: uuidv4(),
+        likes: 0,
         timestamp: Date.now()
     };
 
@@ -61,6 +62,18 @@ router.post("/:id/comments", (req, res) => {
     syncVideosData(videosDataParse);
     res.status(200).json(newComment);
 });
+
+ router.delete("/:videoId/comments/:commentId", (req, res) => {
+     const videoId = req.params.videoId;
+     const commentId = req.params.commentId;
+
+     const currentVideo = videosDataParse.find((video) => video.id === videoId);
+     const currentCommentDelete = currentVideo.comments.splice(
+        currentVideo.comments.findIndex((comment) => comment.id === commentId), 1) [0]; //[0] returns the body of the comment deleted
+    
+    syncVideosData(videosDataParse);
+    res.status(200).json(currentCommentDelete);
+ });
 
 export default router;
 
