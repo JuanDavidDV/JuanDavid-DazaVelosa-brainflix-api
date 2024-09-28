@@ -58,7 +58,7 @@ router.post("/:id/comments", (req, res) => {
     };
 
     currentVideo.comments.push(newComment);
-    syncVideosData(currentVideo);
+    syncVideosData(videosDataParse);
     res.status(200).json(newComment);
 });
 
