@@ -43,7 +43,7 @@ router.route("/")
             views: "0",
             likes: "0",
             duration: "5:30",
-            video: "https://unit-3-project-api-0a5620414506.herokuapp.com/stream",
+            video: "http://localhost:8080/video/BrainStation_Sample_Video.mp4",
             timestamp: Date.now(),
             comments: []
         }
