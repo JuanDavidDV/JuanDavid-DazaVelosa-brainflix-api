@@ -78,10 +78,11 @@ router.post("/:id/comments", (req, res) => {
  router.put("/:videoId/likes", (req, res) => {
     const videoId = req.params.videoId;
     const currentVideo = videosDataParse.find((video) => video.id === videoId);
-    const videoLikes = (parseInt(currentVideo.likes) + 1).toString();
-    console.log(videoLikes);
+    currentVideo.likes = (parseInt(currentVideo.likes) + 1).toString();
+    console.log(currentVideo.likes);
+    console.log(currentVideo);
     syncVideosData(videosDataParse);
-    res.status(200).json(videosDataParse);
+    res.status(200).json(currentVideo.likes);
  });
 
 export default router;
