@@ -14,7 +14,13 @@ const syncVideosData = (data) => {
 router.get("/:id", (req, res) => {
     const videoId = req.params.id;
     const selectVideo = videosDataParse.find((video) => video.id === videoId);
-    res.status(200).json(selectVideo);
+    if(!selectVideo) {
+        res.status(404).json({
+            message: "Video ID does not exist. Please try a different ID"
+        })
+    } else {
+        res.status(200).json(selectVideo);
+    }
 });
 
 router.route("/")
@@ -78,9 +84,7 @@ router.post("/:id/comments", (req, res) => {
  router.put("/:videoId/likes", (req, res) => {
     const videoId = req.params.videoId;
     const currentVideo = videosDataParse.find((video) => video.id === videoId);
-    currentVideo.likes = (parseInt(currentVideo.likes) + 1).toString();
-    console.log(currentVideo.likes);
-    console.log(currentVideo);
+    currentVideo.likes = (parseInt(currentVideo.likes.replaceAll(",", "")) + 1).toLocaleString("en-us");
     syncVideosData(videosDataParse);
     res.status(200).json(currentVideo.likes);
  });
