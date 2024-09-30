@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5051;
 
 app.use(cors({ CORS_ORIGIN })); 
 app.use(express.json());
-app.use(express.static("./public"));    // creates static asset for public folder containing the images
+app.use(express.static("./public"));    // creates static asset for public folder containing the images and video
 app.use("/videos", videosRoutes);
 
 

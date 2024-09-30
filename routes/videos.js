@@ -35,7 +35,7 @@ router.route("/")
     .post((req, res) => {
         const { title, imageUrl, description } = req.body;
         const newVideo = {
-            id: uuidv4(),
+            id: uuidv4(),   //Generates new ID for new post video
             title: title,
             channel: "Mohan Muruge",
             image: imageUrl ? imageUrl : "http://localhost:8080/images/Upload-video-preview.jpg",
