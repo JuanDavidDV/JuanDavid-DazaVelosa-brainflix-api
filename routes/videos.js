@@ -47,7 +47,7 @@ router.route("/")
             timestamp: Date.now(),
             comments: []
         };
-        
+
         videosDataParse.push(newVideo);
         syncVideosData(videosDataParse);
         res.status(200).json(newVideo);
@@ -70,7 +70,7 @@ router.post("/:id/comments", (req, res) => {
     res.status(200).json(newComment);
 });
 
- router.delete("/:videoId/comments/:commentId", (req, res) => {
+ router.delete("/:videoId/comments/:commentId", (req, res) => { 
      const videoId = req.params.videoId;
      const commentId = req.params.commentId;
 
