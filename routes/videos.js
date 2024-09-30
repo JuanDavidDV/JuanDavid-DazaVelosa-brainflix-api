@@ -33,12 +33,12 @@ router.route("/")
         })));
     })
     .post((req, res) => {
-        const { title, image, description } = req.body;
+        const { title, imageUrl, description } = req.body;
         const newVideo = {
             id: uuidv4(),
             title: title,
             channel: "Mohan Muruge",
-            image: image? image: "http://localhost:8080/images/Upload-video-preview.jpg",
+            image: imageUrl ? imageUrl : "http://localhost:8080/images/Upload-video-preview.jpg",
             description: description,
             views: "0",
             likes: "0",
@@ -46,7 +46,8 @@ router.route("/")
             video: "http://localhost:8080/video/BrainStation_Sample_Video.mp4",
             timestamp: Date.now(),
             comments: []
-        }
+        };
+        
         videosDataParse.push(newVideo);
         syncVideosData(videosDataParse);
         res.status(200).json(newVideo);
