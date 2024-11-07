@@ -40,12 +40,12 @@ router.route("/")
             id: uuidv4(),   //Generates new ID for new post video
             title: title,
             channel: "Mohan Muruge",
-            image: imageUrl ? imageUrl : "http://localhost:8080/images/Upload-video-preview.jpg",   //If user does not provide image file, it will provide default upload video image
+            image: imageUrl ? imageUrl : "https://brainflix-api12-20dc90ca1c11.herokuapp.com/images/Upload-video-preview.jpg",   //If user does not provide image file, it will provide default upload video image
             description: description,
             views: "0",
             likes: "0",
             duration: "5:30",
-            video: "http://localhost:8080/video/BrainStation_Sample_Video.mp4",
+            video: "https://brainflix-api12-20dc90ca1c11.herokuapp.com/video/BrainStation_Sample_Video.mp4",
             timestamp: Date.now(),
             comments: []
         };
