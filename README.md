@@ -5,7 +5,7 @@ API instructions: <a href="https://unit-3-project-api-0a5620414506.herokuapp.com
 These API instructions were created by: <a href="https://brainstation.io/" targte="_blank">BrainStation</a>
 
 ## How to run this project?
-- To run the project use: `$ npm run dev`
+- To run the project use: `$ nodemon server.js`
 
 ## Installed Packages
 - [npm axios](https://www.npmjs.com/package/axios)    
