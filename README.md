@@ -40,18 +40,23 @@ These API instructions were created by: <a href="https://brainstation.io/" targt
 #### GET /videos
 - Returns an array of video objects
 
-### GET /videos/:id
+#### GET /videos/:id
 - Returns a detailed object of a single video
 
-### POST /videos/:id/comments
+#### POST /videos/:id/comments
 - Creates a new comment for a specific video
 - Request body must have a "name" and "comment"
 
-### POST /videos
+#### POST /videos
 - Creates a new video and adds to existing array of video objects
 - Request body must contain video title, description, and thumbnail image
 
-### DELETE /videos/:videoId/comments/:commentId
+#### PUT /videos/:id/likes
+- Returns the video object with updated number of likes
+- Increments the number of likes for a specific video object
+
+#### DELETE /videos/:videoId/comments/:commentId
+- Deletes the given comment and returns it in the response body
 
 
 ## Technologies used to develop this project:
